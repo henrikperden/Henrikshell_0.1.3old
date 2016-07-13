@@ -1,0 +1,141 @@
+data:extend(
+{
+  {
+    type = "item",
+    name = "tin-crushed",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-crushed.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "tin-processing",
+    order = "a-1",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "tin-sifted",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-sifted.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "tin-processing",
+    order = "a-2",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "tin-slag-1",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-slag1.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "tin-processing",
+    order = "a-3",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "tin-slag-2",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-slag2.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "tin-processing",
+    order = "a-4",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "tin-crude",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-crude.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "tin-processing",
+    order = "a-5",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "tin-plate",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-plate.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "tin-processing",
+    order = "a-6",
+    stack_size = 200
+  },
+--Recipes--
+  {
+    type = "recipe",
+    name = "tin-crushing",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-crushed.png",
+    category = "crusher",
+    subgroup = "tin-processing",
+    order="a-1",
+    energy_required = 1,
+    enabled = false,
+    ingredients = {{"tin-ore", 5}},
+    results = {{"tin-crushed", 5},{"gravel",3}},
+  },
+  {
+    type = "recipe",
+    name = "tin-sifting",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-sifted.png",
+    category = "sifter",
+    subgroup = "tin-processing",
+    order="a-2",
+    energy_required = 1,
+    enabled = false,
+    ingredients = {{"tin-crushed", 1},{type="fluid", name="water", amount=1}},
+    results = 
+    {
+    {"tin-sifted", 1},
+    {type="item",name="iron-oxide-crushed", probability=0.1, amount_min=1, amount_max=1},
+    {type="item",name="gravel", probability=0.1, amount_min=1, amount_max=1},
+    },
+  },
+  {
+    type = "recipe",
+    name = "tin-roasting",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-slag1.png",
+    category = "smelting",
+    subgroup = "tin-processing",
+    order="a-3",
+    energy_required = 3.5,
+    enabled = false,
+    ingredients = {{"tin-sifted", 10},{"carbon",1},{"sand",1},{"calcium-oxide",1}},
+    results = {{"tin-crude", 5},{"tin-slag-1",5}},
+  },
+  {
+    type = "recipe",
+    name = "tin-roasting-1",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-slag2.png",
+    category = "smelting",
+    subgroup = "tin-processing",
+    order="a-4",
+    energy_required = 3.5,
+    enabled = false,
+    ingredients = {{"tin-slag-1", 10},{"carbon",1},{"iron-plate",1},{"calcium-oxide",1}},
+    results = {{"tin-crude", 5},{"tin-slag-2",5}},
+  },
+    {
+    type = "recipe",
+    name = "tin-roasting-2",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-crude.png",
+    category = "smelting",
+    subgroup = "tin-processing",
+    order="a-5",
+    energy_required = 3.5,
+    enabled = false,
+    ingredients = {{"tin-slag-2", 2}},
+    results = {{"tin-crude", 1},{"metal-waste",1}},
+  },
+  {
+    type = "recipe",
+    name = "tin-refining",
+    icon = "__Henrikshell__/graphics/icons/metalworking/tin-plate.png",
+    category = "smelting",
+    subgroup = "tin-processing",
+    order="a-6",
+    energy_required = 1,
+    enabled = false,
+    ingredients = {{"tin-crude", 1}},
+    results = 
+    {
+    {"tin-plate", 1},
+    {type="item",name="iron-oxide-crushed", probability=0.25, amount_min=1, amount_max=1},
+    {type="item",name="copper-crushed", probability=0.25, amount_min=1, amount_max=1},
+    },
+  },
+}
+)
